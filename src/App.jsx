@@ -1,8 +1,11 @@
+import Body from "./components/Body";
+import Header from "./components/Header";
+
 const App = () => {
   return (
-    <div>
-      App
-      <p className="text-center font-light text-lime-400"> the is the text</p>
+    <div className="bg-black">
+      <Header></Header>
+      <Body></Body>
     </div>
   );
 };
