@@ -1,25 +1,30 @@
 import { useState } from "react";
 import logo from "../assets/fullLogo.png";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartLength = useSelector((store) => store.cart.items.length);
 
   return (
     <nav className="bg-white dark:bg-black fixed w-full z-20 top-0 start-0 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="https://flowbite.com/"
+        <Link
           className="flex items-center space-x-3 rtl:space-x-reverse"
+          to={"/"}
         >
           <img src={logo} className="h-12" alt="Flowbite Logo" />
-        </a>
+        </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
-            className="text-dark  bg-[#ffdd59] hover:bg-[#e6c84f] focus:ring-4 focus:outline-none focus:ring-[#e4c442] font-medium rounded-lg text-base px-4 py-2 text-center dark:bg-[#ffdd59] dark:hover:bg-[#e6c84f] dark:focus:ring-[#ffdd59]"
-          >
-            Get started
-          </button>
+          <Link to={"/cart"}>
+            <button
+              type="button"
+              className="text-dark  bg-[#ffdd59] hover:bg-[#e6c84f] focus:ring-4 focus:outline-none focus:ring-[#e4c442] font-medium rounded-lg text-base px-4 py-2 text-center dark:bg-[#ffdd59] dark:hover:bg-[#e6c84f] dark:focus:ring-[#ffdd59]"
+            >
+              Cart ( {cartLength} )
+            </button>
+          </Link>{" "}
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -53,29 +58,29 @@ function Header() {
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black">
             <li>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="block py-2 px-3 text-white bg-[#ffdd59] rounded md:bg-transparent md:text-[#ffdd59] md:p-0 md:dark:text-[#ffdd59]"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/about"}
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#ffdd59] md:p-0 md:dark:hover:text-[#ffdd59] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/services"}
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#ffdd59] md:p-0 md:dark:hover:text-[#ffdd59] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Services
-              </a>
+              </Link>
             </li>
             <li>
               <a
